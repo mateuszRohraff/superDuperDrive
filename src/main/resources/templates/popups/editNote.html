@@ -13,14 +13,14 @@
                 </div>
                 <div class="modal-body">
                     <form action="#" th:action="@{/note}" th:method="PUT">
-                        <input type="hidden" name="noteId" id="edit-note-id">
+                        <input type="hidden" name="noteId" id="editNoteId">
                         <div class="form-group">
-                            <label for="edit-note-title" class="col-form-label">Title</label>
-                            <input type="text" name= "title" class="form-control" id="edit-note-title" maxlength="20" required>
+                            <label for="editNoteTitle" class="col-form-label">Title</label>
+                            <input type="text" name= "title" class="form-control" id="editNoteTitle" maxlength="20" required>
                         </div>
                         <div class="form-group">
-                            <label for="edit-note-description" class="col-form-label">Message</label>
-                            <textarea class="form-control" name="message" id="edit-note-description" rows="5" maxlength="1000" required></textarea>
+                            <label for="editNoteDescription" class="col-form-label">Message</label>
+                            <textarea class="form-control" name="message" id="editNoteDescription" rows="5" maxlength="1000" required></textarea>
                         </div>
                         <button id="editNoteSubmit" type="submit" class="d-none"></button>
                     </form>
