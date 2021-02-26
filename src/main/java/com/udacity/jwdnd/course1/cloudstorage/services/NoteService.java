@@ -18,8 +18,7 @@ public class NoteService {
     }
 
     public List<Note> getNotes(String username) {
-        int userId = userService.getUser(username).getUserId();
-        return noteMapper.getNotes(userId);
+        return noteMapper.getNotes(userService.getUser(username).getUserId());
     }
 
     public void addNote(Note note, String username) {
