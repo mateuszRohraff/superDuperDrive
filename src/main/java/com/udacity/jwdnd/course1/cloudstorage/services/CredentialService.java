@@ -3,7 +3,6 @@ package com.udacity.jwdnd.course1.cloudstorage.services;
 import com.udacity.jwdnd.course1.cloudstorage.mapper.CredentialMapper;
 import com.udacity.jwdnd.course1.cloudstorage.model.Credential;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Random;
 
@@ -27,5 +26,9 @@ public class CredentialService {
 
     public List<Credential> getCredentials(String username) {
         return credentialMapper.getCredentials(userService.getUser(username).getUserId());
+    }
+
+    public void deleteCredential(Credential credential) {
+        credentialMapper.deleteCredential(credential.getCredentialId());
     }
 }

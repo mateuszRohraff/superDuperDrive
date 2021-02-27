@@ -4,6 +4,8 @@ import com.udacity.jwdnd.course1.cloudstorage.model.Credential;
 import com.udacity.jwdnd.course1.cloudstorage.services.CredentialService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,6 +22,12 @@ public class CredentialController {
     @PostMapping
     public String addCredentials(Credential credential, Authentication authentication) {
         credentialService.addCredential(credential, authentication.getName());
+        return "redirect:/home";
+    }
+
+    @DeleteMapping
+    public String deleteCredential(@ModelAttribute Credential credential) {
+        credentialService.deleteCredential(credential);
         return "redirect:/home";
     }
 }

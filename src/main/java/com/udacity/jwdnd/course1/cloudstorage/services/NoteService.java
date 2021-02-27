@@ -26,8 +26,8 @@ public class NoteService {
         noteMapper.insertNote(note);
     }
 
-    public int deleteNote(int noteId) {
-        return noteMapper.deleteNote(noteId);
+    public int deleteNote(Note note) {
+        return noteMapper.deleteNote(note.getNoteId());
     }
 
     public void updateNote(Note note, String username) {

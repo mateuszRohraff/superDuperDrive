@@ -24,7 +24,7 @@ public class NoteController {
 
     @DeleteMapping()
     public String deleteNote(@ModelAttribute Note note) {
-        noteService.deleteNote(note.getNoteId());
+        noteService.deleteNote(note);
         return "redirect:/home";
     }
 
