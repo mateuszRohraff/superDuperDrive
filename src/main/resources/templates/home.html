@@ -118,7 +118,17 @@
                         <tbody th:each="credential:${credentials}">
                         <tr>
                             <td>
-                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-success"
+                                        th:credentialId="${credential.credentialId}"
+                                        th:url="${credential.url}"
+                                        th:username="${credential.username}"
+                                        th:password="${credential.password}"
+                                        onclick="editCredentialModal(
+                                    this.getAttribute('credentialId'),
+                                    this.getAttribute('url'),
+                                    this.getAttribute('username'),
+                                    this.getAttribute('password'))">
+                                    Edit</button>
                                 <a type="button" class="btn btn-danger"
                                    th:credentialId="${credential.credentialId}"
                                    onclick="showDeleteCredentialModal(this.getAttribute('credentialId'))">Delete</a>
@@ -132,6 +142,7 @@
                 </div>
                 <div th:insert="popups/createCredential :: createCredential"></div>
                 <div th:insert="popups/deleteCredential :: deleteCredential"></div>
+                <div th:insert="popups/editCredential :: editCredential"></div>
             </div>
         </div>
     </div>
@@ -171,6 +182,14 @@
         $('#credential-username').val(username ? username : '');
         $('#credential-password').val(password ? password : '');
         $('#credentialModal').modal('show');
+    }
+
+    function editCredentialModal(credentialId, url, username, password) {
+        $('#editCredential-id').val(credentialId ? credentialId : '');
+        $('#editCredential-url').val(url ? url : '');
+        $('#editCredential-username').val(username ? username : '');
+        $('#editCredential-password').val(password ? password : '');
+        $('#editCredentialModal').modal('show');
     }
 
     function showDeleteCredentialModal(credentialId) {
