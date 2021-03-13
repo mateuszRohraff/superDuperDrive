@@ -11,3 +11,4 @@ Used Technologies
 -SpringBoot/ Security
 -MyBatis
 -Thymeleaf
+-Junit with Selenium
