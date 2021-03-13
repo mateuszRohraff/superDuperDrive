@@ -182,7 +182,7 @@ public class HomePage {
         Thread.sleep(1000);
         editCredentialButton.click();
         Thread.sleep(1000);
-        String unencryptedPassword = editCredentialPasswordField.getText();
+        String unencryptedPassword = editCredentialPasswordField.getAttribute("value");
         Thread.sleep(1000);
         editCredentiualUrlField.clear();
         editCredentiualUrlField.sendKeys(editURl);

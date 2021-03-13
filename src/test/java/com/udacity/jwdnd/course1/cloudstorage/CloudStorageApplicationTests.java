@@ -29,7 +29,7 @@ class CloudStorageApplicationTests {
 	/**
 	 * perform SignUp process
 	 */
-	private void sigUp() {
+	private void signUp() {
 		driver.get("http://localhost:" + this.port + "/signup");
 		SignUpPage signUpPage = new SignUpPage(driver);
 		signUpPage.signUp("Mateusz", "Kowalski", username, password);
@@ -79,7 +79,7 @@ class CloudStorageApplicationTests {
 	@Test
 	public void signUpAndLogin() throws InterruptedException {
 
-		sigUp();
+		signUp();
 
 		login();
 
@@ -98,9 +98,9 @@ class CloudStorageApplicationTests {
 	}
 
 	@Test
-	public void createNote() throws InterruptedException {
+	public void createEditDeleteNote() throws InterruptedException {
 
-		sigUp();
+		signUp();
 
 		login();
 
@@ -113,19 +113,6 @@ class CloudStorageApplicationTests {
 
 		Assertions.assertEquals(homePage.getNoteTitle(), title);
 		Assertions.assertEquals(homePage.getNoteMessage(), message);
-	}
-
-	@Test
-	public void editNote() throws InterruptedException {
-
-		sigUp();
-
-		login();
-
-		Thread.sleep(1000);
-
-		HomePage homePage = new HomePage(driver);
-		homePage.createNote(title, message);
 
 		Thread.sleep(1000);
 
@@ -137,18 +124,6 @@ class CloudStorageApplicationTests {
 
 		Assertions.assertEquals(homePage.getNoteTitle(), editedTitle);
 		Assertions.assertEquals(homePage.getNoteMessage(), editedMessage);
-	}
-
-	@Test
-	public void deleteNote() throws InterruptedException {
-		sigUp();
-
-		login();
-
-		Thread.sleep(1000);
-
-		HomePage homePage = new HomePage(driver);
-		homePage.createNote(title, message);
 
 		Thread.sleep(1000);
 
@@ -161,8 +136,8 @@ class CloudStorageApplicationTests {
 	}
 
 	@Test
-	public void createCredentials() throws InterruptedException {
-		sigUp();
+	public void createEditDeleteCredentials() throws InterruptedException {
+		signUp();
 
 		login();
 
@@ -177,18 +152,6 @@ class CloudStorageApplicationTests {
 		Assertions.assertEquals(homePage.getCredentialUsername(), username);
 		Assertions.assertNotNull(homePage.getCredentialPassword());
 		Assertions.assertNotEquals(homePage.getCredentialPassword(), password);
-	}
-
-	@Test
-	public void editCredential() throws InterruptedException {
-		sigUp();
-
-		login();
-
-		Thread.sleep(1000);
-
-		HomePage homePage = new HomePage(driver);
-		homePage.createCredential(url, username, password);
 
 		Thread.sleep(1000);
 
@@ -204,18 +167,6 @@ class CloudStorageApplicationTests {
 		Assertions.assertNotNull(homePage.getCredentialPassword());
 		Assertions.assertNotEquals(homePage.getCredentialPassword(), editPassword);
 		Assertions.assertEquals(password, unencryptedPassword);
-	}
-
-	@Test
-	public void deleteCredentials() throws InterruptedException {
-		sigUp();
-
-		login();
-
-		Thread.sleep(1000);
-
-		HomePage homePage = new HomePage(driver);
-		homePage.createCredential(url, username, password);
 
 		Thread.sleep(1000);
 
